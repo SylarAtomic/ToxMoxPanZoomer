@@ -124,6 +124,9 @@ default_monitor_info = {
     "screen_y_offset": 0,
 }
 
+# SylarAtomic Edit
+y_start_pos = 659
+
 # Current monitor info (global variable)
 monitor_info = default_monitor_info.copy()
 
@@ -1034,7 +1037,8 @@ def toggle_panning(pressed):
                 
             # Get scene center position (0, 0) is top-left
             scene_center_x = scene_width / 2
-            scene_center_y = scene_height / 2
+            ## scene_center_y = scene_height / 2 // Edit SylarAtomic
+            scene_center_y = y_start_pos
             
             log(f"Using scene dimensions: {scene_width}x{scene_height}, Center: ({scene_center_x},{scene_center_y})")
             
@@ -1177,7 +1181,9 @@ def toggle_panning(pressed):
                 
                 # Calculate viewport's center in the scene
                 source_settings["viewport_scene_center_x"] = pos.x + (viewport_width / 2.0)
-                source_settings["viewport_scene_center_y"] = pos.y + (viewport_height / 2.0)
+                ## source_settings["viewport_scene_center_y"] = pos.y + (viewport_height / 2.0) // Edit SylarAtomic
+                source_settings["viewport_scene_center_y"] = pos.y
+
                 
                 log(f"Found viewport source in scene with bounds: {viewport_width:.0f}x{viewport_height:.0f}, Pos: ({pos.x:.1f},{pos.y:.1f})")
                 log(f"Viewport scene center calculated: ({source_settings['viewport_scene_center_x']:.1f},{source_settings['viewport_scene_center_y']:.1f})")
@@ -4496,7 +4502,8 @@ def toggle_panning_for_config(pressed, config, src_settings, current_scene_item,
                 
             # Get scene center position (0, 0) is top-left
             scene_center_x = scene_width / 2
-            scene_center_y = scene_height / 2
+            ## scene_center_y = scene_height / 2 // Edit SylarAtomic
+            scene_center_y = y_start_pos
             
             log(f"Config {config_num} using scene dimensions: {scene_width}x{scene_height}, Center: ({scene_center_x},{scene_center_y})")
             
